@@ -69,7 +69,7 @@ If you are using IIS8.0, you need to disable WebDAV. You can do this by changing
 	</handlers>
 </system.webServer>
 
-How to configure Authentication?
+How do I configure Authentication?
 
 You only need to add the handler for your Web API route. For example, if your Web API route is in: 
 \App_Start\WebApiConfig.cs
