@@ -48,7 +48,12 @@ This project works under the following conditions:
         <!-- If set to true, the below key will ensure that calls to your API come over SSL. Set to true on production systems -->
         <add key="OAuth2RequireSsl" value="False"/>
    </appSettings>
-5. Follow the FAQ below for more details:
+5. Make sure that the following DOES NOT EXIST in your web.config:
+			<dependentAssembly>
+				<assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+				<bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+			</dependentAssembly>
+6. Follow the FAQ below for more details:
 
 FAQ
 ----
