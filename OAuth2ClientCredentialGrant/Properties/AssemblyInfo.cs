@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OAuth2ClientCredentialGrant")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("OAuth2ClientCredentialsGrant")]
+[assembly: AssemblyDescription("Enables securing of WebAPIs using OAuth2 Client Credentials Grant  - See https://dev.twitter.com/docs/auth/application-only-auth")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OAuth2ClientCredentialGrant")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("Sent.ly Pte. Ltd.")]
+[assembly: AssemblyProduct("OAuth2ClientCredentialsGrant")]
+[assembly: AssemblyCopyright("Copyright © Sent.ly 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6820d30a-0e34-4d35-bece-71944a5c7248")]
+[assembly: Guid("f67c6f43-d22b-4a74-8587-b4f706be8bcb")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
