@@ -4,10 +4,11 @@ OAuth2ClientCredentialGrant
 A library that allows you to secure REST based Web Api projects that use WebMatrix.WebData.SimpleMembershipProvider as their MembershipProvider
 
 This project works under the following conditions:
+```
 1. You are using .NET Framework v4.5 for all you projects
 2. You are using WebMatrix.WebData.SimpleMembershipProvider as your MembershipProvider in your WebApi project.
    To enable this, your web.config must have the following entries:
-   ```
+   
 	<system.web>
 		<compilation debug="true" targetFramework="4.5"/>
 		<roleManager enabled="true" defaultProvider="SimpleRoleProvider">
@@ -23,32 +24,25 @@ This project works under the following conditions:
 			</providers>
 		</membership>
 	<sytem.web>
-	```
 3. You have a connection strings as shown below:
-	```
 	<connectionStrings>
 		<add name="DefaultConnection" connectionString="Your SQL connection string" providerName="System.Data.SqlClient" />
 		<add name="StorageConnectionString" connectionString="DefaultEndpointsProtocol=https;AccountName=Your azure storage account name;AccountKey=Your Azure storage account key" />
 	</connectionStrings>
-	```
  4. You have the following appsettings in web.config:
-	```
 	<appSettings>
         <!-- The below value gives the name of the connection string configured earlier -->
         <add key="OAuth2ConnectionStringName" value="StorageConnectionString" />
         <!-- If set to true, the below key will ensure that calls to your API come over SSL. Set to true on production systems -->
         <add key="OAuth2RequireSsl" value="False"/>
    </appSettings>
-   ```
 5. Make sure that the following DOES NOT EXIST in your web.config:
-	```
 	<dependentAssembly>
 		<assemblyIdentity name="System.Net.Http" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
 		<bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
 	</dependentAssembly>
-	```
 6. Follow the FAQ below for more details:
-
+```
 FAQ
 ===
 
