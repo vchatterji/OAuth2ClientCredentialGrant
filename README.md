@@ -46,6 +46,7 @@ FAQ
 
 PUT and DELETE verbs don't work! How can I enable them?
 If you are using IIS8.0, you need to disable WebDAV. You can do this by changing the web.config to remove the handler and module:
+```
 <system.webServer>
 	<modules runAllManagedModulesForAllRequests="true">
 		<remove name="WebDAVModule" />
@@ -54,6 +55,9 @@ If you are using IIS8.0, you need to disable WebDAV. You can do this by changing
 		<remove name="WebDAV" />
 	</handlers>
 </system.webServer>
+```
+
+-------------------------------------
 
 How do I configure Authentication?
 
@@ -61,7 +65,8 @@ You only need to add the handler for your Web API route. For example, if your We
 \App_Start\WebApiConfig.cs
 
 Then the file should look like:
-public static class WebApiConfig
+```
+	public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
@@ -88,6 +93,7 @@ public static class WebApiConfig
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
     }
+```
 
 --------------------
 
@@ -96,6 +102,7 @@ Where will this component store credentials and how do I set that up?
 This component uses Azure Storage Tables to store its data. To configure it to use Azure Storage, you need to add a connection string for Azure
 in your web.config file. You can then add a configuration setting pointing to the name of the configuration string. This is shown below: 
 
+```
 <configuration>
     <connectionStrings>
         <add name="StorageConnectionString" connectionString="DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_key" />
@@ -107,6 +114,7 @@ in your web.config file. You can then add a configuration setting pointing to th
         <add key="OAuth2RequireSsl" value="False"/>
    </appSettings>
 </configuration>
+```
 
 -------------------
 
@@ -115,7 +123,9 @@ How do I generate consumer keys and secrets for my API?
 You can use the following method to generate a consumer key and secret pair for your API. The username is the username on your site you are
 generating API credentials for. You can also specify a Dictionary of name value pairs that will be stored along with the credentials.
 
+```
 OAuth2DataFactory.CredentialManager.CreateCredential(string username, Dictionary<string, string> properties);
+```
 
 -------------------
 
@@ -123,6 +133,7 @@ How do I get/retrieve/delete credentials?
 
 You can use the following methods to manipulate credentials:
 
+```
 //Retrieve a credential based on consumer secret and consumer key. The credential object will contain the properties used while creating the credential.
 OAuth2DataFactory.CredentialManager.GetCredential(string consumer_Key, string consumer_Secret);
 
@@ -132,20 +143,26 @@ OAuth2DataFactory.CredentialManager.GetCredentials(string username);
 
 //Delete a compromised credential
 OAuth2DataFactory.CredentialManager.DeleteCredential(string consumer_Key, string consumer_Secret);
+```
 
 ------------------
 
 How do I set the properties name value pairs for a credential?
 
 You can use the following method to set the property name value pairs for a credential:
+
+```
 OAuth2DataFactory.CredentialManager.SetProperties(string consumer_Key, string consumer_Secret, Dictionary<string, string> properties);
+```
 
 ------------------
 
 How do I see the username of the user who is accessing my protected API?
 
 You can use:
+```
 Thread.CurrentPrincipal.Identity.Name in your WebAPI methods to find the username for the user accessing your API.
+```
 
 ------------------
 
@@ -153,16 +170,18 @@ How do I acess the properties stored against the credential in my protected Web 
 
 You can retrieve the credential in your Web API method using:
 
+```
 string consumerKey = (string) Request.Properties["ConsumerKey"];
 string consumerSecret = (string) Request.Properties["ConsumerSecret"];
 OAuth2Credential credential = OAuth2ClientCredentialsGrant.OAuth2DataFactory.CredentialManager.GetCredential(consumerKey, consumerSecret);
 
 The credential object thus retrieved will have the properties. If a property changes, you can change it in the object and persist it back to the store using:
 OAuth2DataFactory.CredentialManager.SetProperties(consumerKey , consumerSecret , credential.Properties);
+```
 
 ------------------
 
 How do I make API calls to my secured API?
 
-You can use the OAuth2Client  to make calls to your secured API.
+You can use the OAuth2Client class to make calls to your secured API.
 
